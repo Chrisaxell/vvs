@@ -19,17 +19,6 @@ Vinmonopolet has an optional portal-api key you can paste in the popup's
 Settings — otherwise it falls back to their public search, which works fine
 most of the time.
 
-## Publish it
-
-```
-npm run package
-```
-
-Produces `systempolet-v<version>.zip` at the project root. Upload that at
-[chrome.google.com/webstore/devconsole](https://chrome.google.com/webstore/devconsole)
-(one-time $5 dev-account fee). Screenshots (1280×800 or 640×400), a short
-tagline, and the icon are the only real content you need to fill in.
-
 ## Poke around
 
 - `src/background.ts` — cross-store search & matching lives here
