@@ -1,0 +1,21 @@
+{
+  "name": "systempolet",
+  "version": "0.2.0",
+  "description": "Browser extension that compares prices between Systembolaget (SE) and Vinmonopolet (NO).",
+  "scripts": {
+    "build": "npm run typecheck && node build.mjs",
+    "watch": "node build.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist",
+    "package": "npm run build && node -e \"const{execSync}=require('node:child_process');const{version}=require('./package.json');const out=`systempolet-v${version}.zip`;require('node:fs').rmSync(out,{force:true});execSync(`powershell -NoProfile -Command \\\"Compress-Archive -Path dist/* -DestinationPath ${out}\\\"`,{stdio:'inherit'});console.log('->',out);\""
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.268",
+    "copyfiles": "^2.4.1",
+    "esbuild": "^0.28.1",
+    "rimraf": "^5.0.5",
+    "sharp": "^0.35.3",
+    "typescript": "^5.5.3"
+  },
+  "private": true
+}

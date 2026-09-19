@@ -1,0 +1,56 @@
+{
+  "manifest_version": 3,
+  "name": "Systempolet – Vinmonopolet vs Systembolaget",
+  "version": "0.2.0",
+  "description": "Compare products and prices between Systembolaget (SE) and Vinmonopolet (NO).",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Systempolet – Compare SE/NO prices",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.systembolaget.se/*"],
+      "js": ["content/systembolaget.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["*://*.vinmonopolet.no/*"],
+      "js": ["content/vinmonopolet.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": ["storage", "activeTab", "declarativeNetRequest"],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "sb_headers",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "host_permissions": [
+    "*://*.systembolaget.se/*",
+    "*://api-extern.systembolaget.se/*",
+    "*://*.vinmonopolet.no/*",
+    "*://apis.vinmonopolet.no/*",
+    "*://api.frankfurter.app/*"
+  ]
+}
+

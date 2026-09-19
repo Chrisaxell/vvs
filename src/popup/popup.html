@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Systempolet</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Systempolet</h1>
+      <p class="subtitle">Systembolaget &harr; Vinmonopolet</p>
+    </header>
+
+    <section id="context" class="card">
+      <span class="label">Where you are</span>
+      <div id="context-body" class="value">
+        <em>Checking current tab…</em>
+      </div>
+    </section>
+
+    <section id="fx" class="card">
+      <span class="label">FX rate</span>
+      <span id="fx-value" class="value">&ndash;</span>
+    </section>
+
+    <section id="settings" class="card">
+      <div class="settings-head">
+        <span class="label">Settings</span>
+        <span id="settings-status" class="settings-status">not configured</span>
+      </div>
+      <div class="settings-body">
+        <div class="settings-note">
+          Vinmonopolet portal-api keys. Stored only in this browser
+          (<code>chrome.storage.local</code>). Get them from
+          <a href="https://portal-api.vinmonopolet.no/" target="_blank" rel="noopener">portal-api.vinmonopolet.no</a>.
+        </div>
+        <label class="settings-field">
+          <span>Primary key</span>
+          <input id="vmp-primary" type="password" autocomplete="off" spellcheck="false" placeholder="32-char subscription key" />
+        </label>
+        <label class="settings-field">
+          <span>Secondary key (optional)</span>
+          <input id="vmp-secondary" type="password" autocomplete="off" spellcheck="false" placeholder="rotation backup" />
+        </label>
+        <div class="settings-actions">
+          <button id="settings-save" type="button">Save</button>
+          <button id="settings-clear" type="button" class="ghost">Clear</button>
+          <button id="settings-show" type="button" class="ghost">Show</button>
+        </div>
+        <div id="settings-feedback" class="settings-feedback"></div>
+      </div>
+    </section>
+
+    <footer>
+      <button id="refresh-btn">Refresh</button>
+    </footer>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>
+
